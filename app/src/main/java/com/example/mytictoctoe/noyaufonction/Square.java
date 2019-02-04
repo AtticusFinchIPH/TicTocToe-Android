@@ -4,6 +4,7 @@ public class Square {
 
     private int position;
     private static char character;
+    private boolean isAccessible;
 
     public Square() {
         character = ' ';
@@ -27,11 +28,19 @@ public class Square {
         return position;
     }
 
-    public static void setCharacter(char character) {
+    public void setCharacter(char character) {
         Square.character = character;
     }
 
-    public static char getCharacter() {
+    public char getCharacter() {
         return character;
+    }
+
+    public void setAccesible(boolean a){
+        isAccessible = a;
+    }
+
+    public boolean isAccessible() {
+        return isAccessible;
     }
 }

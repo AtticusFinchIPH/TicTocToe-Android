@@ -16,7 +16,7 @@ public class GameEngine {
         playerList.get(0).setCharacter('O');
         playerList.get(1).setCharacter('X');
         setCurrentPlayer(playerList.get(0));
-        playGame();
+        newGame();
     }
 
     public void setCurrentPlayer(Player currentPlayer) {
@@ -25,6 +25,10 @@ public class GameEngine {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    public void changePlayer(){
+        currentPlayer = (currentPlayer.getCharacter() == 'X' ? playerList.get(0) : playerList.get(1));
     }
 
     public void addPlayer(Player player){
@@ -39,8 +43,13 @@ public class GameEngine {
         setEnded(false);
     }
 
-    public void playGame() {
-
+    public void choose(int x, int y) {
+        if(!isEnded && grid.getSquares().get(x + 3*y).getCharacter() == ' '){
+            grid.getSquares().get(x + 3*y).setCharacter(currentPlayer.getCharacter());
+            if(grid.checkWinner()== ' ') changePlayer();
+            else if(grid.checkWinner()== currentPlayer.getCharacter()) setEnded(true);
+            else if(grid.checkWinner()== 'N') setEnded(true);// Attention here!!!!!!!!!!!
+        }
     }
 
     public boolean isEnded() {
