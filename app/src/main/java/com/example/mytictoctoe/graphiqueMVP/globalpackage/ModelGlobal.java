@@ -1,10 +1,10 @@
-package com.example.mytictoctoe.graphiqueMVP.buttonpackage;
+package com.example.mytictoctoe.graphiqueMVP.globalpackage;
 
-public class ModelButton {
+public class ModelGlobal {
 
     private  boolean clickable;
 
-    public ModelButton() {
+    public ModelGlobal() {
         clickable = true;
     }
 

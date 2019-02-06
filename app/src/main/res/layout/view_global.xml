@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.mytictoctoe.graphiqueMVP.globalpackage.ViewGlobal
+        android:id="@+id/global"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid
+            android:id="@+id/viewgrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid>
+
+        <Button
+            android:id="@+id/playbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.example.mytictoctoe.graphiqueMVP.globalpackage.ViewGlobal>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,14 +1,14 @@
 package com.example.mytictoctoe.graphiqueMVP.gridpackage;
 
 import com.example.mytictoctoe.graphiqueMVP.gridpackage.automate.IEtatGrid;
-import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfButton;
+import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGlobal;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGrid;
 import com.example.mytictoctoe.noyaufonction.GameEngine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PresentationGrid implements IObserverOfButton {
+public class PresentationGrid implements IObserverOfGlobal {
 
     private IViewGrid viewGrid;
     private GameEngine gameEngine;
@@ -49,12 +49,12 @@ public class PresentationGrid implements IObserverOfButton {
     }
 
     @Override
-    public void updateFromButton() {
+    public void updateFromGlobal() {
 
     }
 
     @Override
-    public void subscribeToButton() {
+    public void subscribeToGlobal() {
 
     }
 

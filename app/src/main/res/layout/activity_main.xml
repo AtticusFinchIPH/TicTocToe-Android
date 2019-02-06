@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid
+    <com.example.mytictoctoe.graphiqueMVP.globalpackage.ViewGlobal
+        android:id="@+id/viewglobal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-    </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid>
+    </com.example.mytictoctoe.graphiqueMVP.globalpackage.ViewGlobal>
 
 </android.support.constraint.ConstraintLayout>

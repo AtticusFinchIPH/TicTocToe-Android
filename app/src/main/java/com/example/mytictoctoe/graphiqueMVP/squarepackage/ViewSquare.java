@@ -8,10 +8,16 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
-public class ViewSquare extends View implements IViewSquare {
+import com.example.mytictoctoe.R;
+
+public class ViewSquare extends RelativeLayout implements IViewSquare {
 
     private PresentationSquare presSquare;
+
+    private View racine;
 
     private static final int LINE_THICK = 5;
     private static final int ELT_MARGIN = 5;
@@ -21,34 +27,24 @@ public class ViewSquare extends View implements IViewSquare {
 
     public ViewSquare(Context context){
         super(context);
+
+        initPaintSquare(context);
     }
 
     public ViewSquare(Context context, final PresentationSquare pres){
         super(context);
         presSquare = pres;
 
-        squarePaint = new Paint();
-        oPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        oPaint.setColor(Color.RED);
-        oPaint.setStyle(Paint.Style.STROKE);
-        oPaint.setStrokeWidth(SQ_STROKE_WIDTH);
-        xPaint = new Paint(oPaint);
-        xPaint.setColor(Color.BLUE);
+        initPaintSquare(context);
     }
 
     public ViewSquare (Context context, @Nullable AttributeSet attributeSet){
         super(context, attributeSet);
 
-        squarePaint = new Paint();
-        squarePaint.setColor(Color.GRAY);
-        oPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        oPaint.setColor(Color.RED);
-        oPaint.setStyle(Paint.Style.STROKE);
-        oPaint.setStrokeWidth(SQ_STROKE_WIDTH);
-        xPaint = new Paint(oPaint);
-        xPaint.setColor(Color.BLUE);
+        initPaintSquare(context);
     }
 
+    // Methods from View
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         height = View.MeasureSpec.getSize(heightMeasureSpec);
@@ -68,8 +64,11 @@ public class ViewSquare extends View implements IViewSquare {
         return super.onTouchEvent(event);
 
         // TODO : Invalidate()
+        // Call to presSquare
+        // and check which player is playing to imply appropriate character
     }
 
+    // Methods for notifying presSquare
     @Override
     public void notifDisable(boolean b) {
 
@@ -78,6 +77,20 @@ public class ViewSquare extends View implements IViewSquare {
     @Override
     public void notifCharacter(char c) {
 
+    }
+
+    // Methods belong to this class
+    private void initPaintSquare(Context context){
+        racine = inflate(context, R.layout.view_square, this);
+
+        squarePaint = new Paint();
+        squarePaint.setColor(Color.GRAY);
+        oPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        oPaint.setColor(Color.RED);
+        oPaint.setStyle(Paint.Style.STROKE);
+        oPaint.setStrokeWidth(SQ_STROKE_WIDTH);
+        xPaint = new Paint(oPaint);
+        xPaint.setColor(Color.BLUE);
     }
 
     private void drawSquare(Canvas canvas) {
