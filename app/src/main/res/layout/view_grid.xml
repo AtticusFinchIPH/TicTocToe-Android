@@ -1,19 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
-        android:id="@+id/square"
+    <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid
+        android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
-
-    <com.example.mytictoctoe.graphiqueMVP.squarepackage.ViewSquare
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.example.mytictoctoe.graphiqueMVP.squarepackage.ViewSquare>
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.squarepackage.ViewSquare
+        android:id="@+id/square_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.squarepackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+        <com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare
+        android:id="@+id/square_9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewSquare>
+
+    </com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid>
 
 </android.support.constraint.ConstraintLayout>
