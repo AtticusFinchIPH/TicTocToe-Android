@@ -14,7 +14,7 @@ public class PresentationGlobal implements IObserverOfGrid {
 
     // Etats
     private IEtatGlobal etatCourant;
-    private IEtatGlobal etatActiveButton;
+    private IEtatGlobal etatEnableButton;
     private IEtatGlobal etatDisableButton;
 
     // Observers of Button
@@ -25,7 +25,7 @@ public class PresentationGlobal implements IObserverOfGrid {
 
         //etatActiveButton
         //etatDisableButton
-        etatCourant = etatActiveButton;
+        etatCourant = etatEnableButton;
     }
 
     // Point to IVueButton
@@ -63,8 +63,8 @@ public class PresentationGlobal implements IObserverOfGrid {
         return etatCourant;
     }
 
-    public IEtatGlobal getEtatActiveButton(){
-        return etatActiveButton;
+    public IEtatGlobal getEtatEnableButton(){
+        return etatEnableButton;
     }
 
     public IEtatGlobal getEtatDisableButton() {

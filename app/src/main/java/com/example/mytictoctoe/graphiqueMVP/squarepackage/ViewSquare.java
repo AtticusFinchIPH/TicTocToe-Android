@@ -5,15 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.example.mytictoctoe.R;
 
-public class ViewSquare extends RelativeLayout implements IViewSquare {
+public class ViewSquare extends ConstraintLayout implements IViewSquare {
 
     private PresentationSquare presSquare;
 
@@ -44,12 +43,17 @@ public class ViewSquare extends RelativeLayout implements IViewSquare {
         initPaintSquare(context);
     }
 
+    public void setPresSquare(PresentationSquare presSquare) {
+        this.presSquare = presSquare;
+    }
+
     // Methods from View
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         height = View.MeasureSpec.getSize(heightMeasureSpec);
         width = View.MeasureSpec.getSize(widthMeasureSpec);
 
+        int size = Math.min(width, height);
         setMeasuredDimension(width, height);
     }
 

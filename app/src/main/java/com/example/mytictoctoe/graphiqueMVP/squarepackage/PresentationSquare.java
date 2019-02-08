@@ -75,15 +75,15 @@ public class PresentationSquare implements IObserverOfGrid {
         return etatCourant;
     }
 
-    public void setEtatDisableSquare(IEtatSquare etatDisableSquare) {
-        this.etatDisableSquare = etatDisableSquare;
+    public IEtatSquare getEtatDisableSquare() {
+        return etatDisableSquare;
     }
 
-    public void setEtatEmptySquare(IEtatSquare etatEmptySquare) {
-        this.etatEmptySquare = etatEmptySquare;
+    public IEtatSquare getEtatEmptySquare() {
+        return etatEmptySquare;
     }
 
-    public void setEtatFilledSquare(IEtatSquare etatFilledSquare) {
-        this.etatFilledSquare = etatFilledSquare;
+    public IEtatSquare getEtatFilledSquare() {
+        return etatFilledSquare;
     }
 }
