@@ -1,13 +1,16 @@
 package com.example.mytictoctoe.graphiqueMVP.gridpackage.automate;
 
+import com.example.mytictoctoe.graphiqueMVP.gridpackage.ModelGrid;
+import com.example.mytictoctoe.graphiqueMVP.gridpackage.PresentationGrid;
+
 import java.util.logging.Logger;
 
 public class EtatGridEndGame extends AbstractEtatGrid {
 
     private Logger LOGGER = Logger.getLogger(EtatGridEndGame.class.getName());
 
-    public EtatGridEndGame(){
-        super();
+    public EtatGridEndGame(PresentationGrid pres, ModelGrid mod){
+        super(pres, mod);
     }
 
     @Override

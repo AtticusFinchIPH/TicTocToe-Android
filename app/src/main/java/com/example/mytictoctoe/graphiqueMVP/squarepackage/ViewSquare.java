@@ -65,11 +65,11 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if(presSquare.getEtatCourant().equals(presSquare.getEtatEmptySquare())){
+            invalidate();
+            presSquare.touched();
+        }
         return super.onTouchEvent(event);
-
-        // TODO : Invalidate()
-        // Call to presSquare
-        // and check which player is playing to imply appropriate character
     }
 
     // Methods for notifying presSquare
@@ -108,7 +108,7 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
 
     // TODO : Verify
     private void drawChoosen(Canvas canvas) {
-        char c = presSquare.getSquare().getCharacter();
+        char c = presSquare.getModelSquare().getCharacter();
         if (c == 'O') {
             float cx = width / 2;
             float cy = height / 2;

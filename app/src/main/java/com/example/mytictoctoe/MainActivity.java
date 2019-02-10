@@ -2,6 +2,7 @@ package com.example.mytictoctoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.mytictoctoe.graphiqueMVP.globalpackage.PresentationGlobal;
 import com.example.mytictoctoe.graphiqueMVP.globalpackage.ViewGlobal;
@@ -19,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewGlobal = findViewById(R.id.viewglobal);
+        Log.d("Geste", "Dans OnCreate");
+
+        gameEngine = new GameEngine();
+        presGlobal = new PresentationGlobal();
+        presGlobal.setView(viewGlobal);
+        presGlobal.setGameEngine(gameEngine);
+        viewGlobal.setPresGlobal(presGlobal);
+        viewGlobal.setActivity(this);
     }
 }

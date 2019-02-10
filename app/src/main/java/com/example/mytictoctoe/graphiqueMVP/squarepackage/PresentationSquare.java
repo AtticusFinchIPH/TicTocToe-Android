@@ -3,7 +3,11 @@ package com.example.mytictoctoe.graphiqueMVP.squarepackage;
 import com.example.mytictoctoe.graphiqueMVP.gridpackage.PresentationGrid;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGrid;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfSquare;
+import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.EtatDisableSquare;
+import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.EtatEmptySquare;
+import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.EtatFilledSquare;
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.IEtatSquare;
+import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.SquareException;
 import com.example.mytictoctoe.noyaufonction.Square;
 
 import java.util.ArrayList;
@@ -12,7 +16,9 @@ import java.util.List;
 public class PresentationSquare implements IObserverOfGrid {
 
     private IViewSquare viewSquare;
-    private Square square;
+    private ModelSquare modelSquare;
+
+    private PresentationGrid presGrid;
 
     // Etats
     private IEtatSquare etatCourant;
@@ -25,24 +31,19 @@ public class PresentationSquare implements IObserverOfGrid {
 
     public PresentationSquare(){
 
-        //etatDisableSquare
-        //etatEmptySquare
-        //etatFilledSquare
+        etatDisableSquare = new EtatDisableSquare(this, modelSquare);
+        etatEmptySquare = new EtatEmptySquare(this, modelSquare);
+        etatFilledSquare = new EtatFilledSquare(this, modelSquare);
         etatCourant = etatDisableSquare;
     }
 
-    // Point to Square
-    public void setSquare(Square square) {
-        this.square = square;
-    }
-
-    public Square getSquare() {
-        return square;
-    }
-
     // Point to IViewSquare
-    public void setViewSquare(IViewSquare viewSquare) {
+    public void setView(IViewSquare viewSquare) {
         this.viewSquare = viewSquare;
+    }
+
+    public ModelSquare getModelSquare() {
+        return modelSquare;
     }
 
     // Methods for Observer Pattern
@@ -58,12 +59,29 @@ public class PresentationSquare implements IObserverOfGrid {
 
     @Override
     public void updateFromGrid() {
-
+        if (presGrid.getEtatCourant().equals(presGrid.getEtatSwitchPlayer())) {
+            try{
+                etatCourant.choose();
+                modelSquare.setCharacter(presGrid.getModelGrid().getCurrentCharacter());
+            } catch (SquareException e){
+            }
+        } else if (presGrid.getEtatCourant().equals(presGrid.getEtatInGame())){
+            try {
+                etatCourant.newgame();
+            } catch (SquareException e){
+            }
+        } else if(presGrid.getEtatCourant().equals(presGrid.getEtatEndGame())){
+            try {
+                etatCourant.endgame();
+            } catch (SquareException e){
+            }
+        }
     }
 
     @Override
-    public void subscribeToGrid() {
-
+    public void subscribeToGrid(PresentationGrid subject) {
+        presGrid = subject;
+        presGrid.attach(this);
     }
 
     //----------Gestion Automate + Facade
@@ -85,5 +103,14 @@ public class PresentationSquare implements IObserverOfGrid {
 
     public IEtatSquare getEtatFilledSquare() {
         return etatFilledSquare;
+    }
+
+    public void touched(){
+        try{
+            etatCourant.choose();
+        } catch (SquareException e){
+        }
+
+        notifAllObservers();
     }
 }

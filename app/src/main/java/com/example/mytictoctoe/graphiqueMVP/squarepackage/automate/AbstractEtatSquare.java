@@ -1,14 +1,16 @@
 package com.example.mytictoctoe.graphiqueMVP.squarepackage.automate;
 
-import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.AbstractEtatGlobal;
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.PresentationSquare;
+import com.example.mytictoctoe.graphiqueMVP.squarepackage.ModelSquare;
 
 public abstract class AbstractEtatSquare implements IEtatSquare {
 
     protected PresentationSquare presSquare;
+    protected ModelSquare modelSquare;
 
-    public AbstractEtatSquare(final PresentationSquare pres){
+    public AbstractEtatSquare(final PresentationSquare pres, ModelSquare mod){
         presSquare = pres;
+        modelSquare = mod;
     }
 
     @Override

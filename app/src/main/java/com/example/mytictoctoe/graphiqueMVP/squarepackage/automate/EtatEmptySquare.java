@@ -3,12 +3,13 @@ package com.example.mytictoctoe.graphiqueMVP.squarepackage.automate;
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.PresentationSquare;
 
 import java.util.logging.Logger;
+import com.example.mytictoctoe.graphiqueMVP.squarepackage.ModelSquare;
 
 public class EtatEmptySquare extends AbstractEtatSquare {
     private Logger LOGGER = Logger.getLogger(EtatEmptySquare.class.getName());
 
-    public EtatEmptySquare(PresentationSquare pres){
-        super(pres);
+    public EtatEmptySquare(PresentationSquare pres, ModelSquare mod){
+        super(pres, mod);
     }
 
     @Override

@@ -10,7 +10,7 @@ import com.example.mytictoctoe.MainActivity;
 import com.example.mytictoctoe.R;
 import com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid;
 
-public class ViewGlobal extends LinearLayout implements IViewGlobal {
+public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClickListener {
 
     private PresentationGlobal presGlobal;
 
@@ -20,6 +20,8 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal {
     private TextView textView;
     private ViewGrid viewGrid;
     private Button playButton;
+
+    private static char player;
 
     public ViewGlobal(Context context){
         super(context);
@@ -36,8 +38,22 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal {
     }
 
     @Override
-    public void notifStartGame() {
+    public void onClick(View v) {
+        presGlobal.pressButton();
+        playButton.setActivated(false);
+    }
 
+    @Override
+    public void notifSwitchPlayer() {
+        player = presGlobal.getModel().getCurrentplayer();
+        textView.setText(player + "'s turn");
+    }
+
+    @Override
+    public void notifEndGame() {
+        // set textView
+        playButton.setActivated(true);
+        playButton.setText("Play");
     }
 
     public void initGlobal(Context context){
@@ -46,5 +62,11 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal {
         textView = findViewById(R.id.textview);
         viewGrid = findViewById(R.id.viewgrid);
         playButton = findViewById(R.id.playbutton);
+
+        textView.setText("Click Play Button to Start");
+        playButton.setActivated(true);
+        playButton.setText("Play");
+        playButton.setOnClickListener(this);
     }
+
 }

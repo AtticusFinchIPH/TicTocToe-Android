@@ -1,8 +1,13 @@
 package com.example.mytictoctoe.graphiqueMVP.globalpackage;
 
+import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.ButtonException;
+import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.EtatDisableGlobal;
+import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.EtatEnableGlobal;
 import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.IEtatGlobal;
+import com.example.mytictoctoe.graphiqueMVP.gridpackage.PresentationGrid;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGlobal;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGrid;
+import com.example.mytictoctoe.noyaufonction.GameEngine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +16,9 @@ public class PresentationGlobal implements IObserverOfGrid {
 
     private IViewGlobal viewGlobal;
     private ModelGlobal modelGlobal;
+
+    private PresentationGrid presGrid;
+    private GameEngine gameEngine;
 
     // Etats
     private IEtatGlobal etatCourant;
@@ -23,14 +31,22 @@ public class PresentationGlobal implements IObserverOfGrid {
     public PresentationGlobal() {
         modelGlobal = new ModelGlobal();
 
-        //etatActiveButton
-        //etatDisableButton
+        etatEnableButton = new EtatEnableGlobal(this, modelGlobal);
+        etatDisableButton = new EtatDisableGlobal(this, modelGlobal);
         etatCourant = etatEnableButton;
+    }
+
+    public ModelGlobal getModel() {
+        return modelGlobal;
     }
 
     // Point to IVueButton
     public void setView(final IViewGlobal v){
         viewGlobal = v;
+    }
+
+    public void setGameEngine(GameEngine gameEngine) {
+        this.gameEngine = gameEngine;
     }
 
     // Methods for Observer Pattern
@@ -46,12 +62,14 @@ public class PresentationGlobal implements IObserverOfGrid {
 
     @Override
     public void updateFromGrid() {
-
+        //gameEngine.isEnded();
+        this.notifAllObservers();
     }
 
     @Override
-    public void subscribeToGrid() {
-
+    public void subscribeToGrid(PresentationGrid subject) {
+        presGrid = subject;
+        presGrid.attach(this);
     }
 
     //----------Gestion Automate + Facade
@@ -69,5 +87,15 @@ public class PresentationGlobal implements IObserverOfGrid {
 
     public IEtatGlobal getEtatDisableButton() {
         return etatDisableButton;
+    }
+
+    //Its own methods
+    public void pressButton(){
+        viewGlobal.notifSwitchPlayer();
+        this.notifAllObservers();
+        try {
+            etatCourant.newgame();
+        } catch (ButtonException e){
+        }
     }
 }
