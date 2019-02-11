@@ -30,15 +30,14 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
         initPaintSquare(context);
     }
 
-    public ViewSquare(Context context, final PresentationSquare pres){
-        super(context);
-        presSquare = pres;
+    public ViewSquare (Context context, @Nullable AttributeSet attributeSet){
+        super(context, attributeSet);
 
         initPaintSquare(context);
     }
 
-    public ViewSquare (Context context, @Nullable AttributeSet attributeSet){
-        super(context, attributeSet);
+    public ViewSquare(Context context, @Nullable AttributeSet attributeSet, int defStyle){
+        super(context, attributeSet, defStyle);
 
         initPaintSquare(context);
     }

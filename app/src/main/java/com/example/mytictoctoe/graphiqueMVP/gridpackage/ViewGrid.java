@@ -2,6 +2,8 @@ package com.example.mytictoctoe.graphiqueMVP.gridpackage;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.GridLayout;
 
@@ -18,14 +20,24 @@ public class ViewGrid extends GridLayout implements IViewGrid {
 
     public ViewGrid (Context context){
         super(context);
+
         initGrid(context);
     }
 
-    public ViewGrid (Context context, final PresentationGrid pres) {
-        super(context);
-        presGrid = pres;
+    public ViewGrid (Context context, @Nullable AttributeSet attributeSet) {
+        super(context, attributeSet);
 
         initGrid(context);
+    }
+
+    public ViewGrid (Context context, @Nullable AttributeSet attributeSet, int defStyle) {
+        super(context, attributeSet, defStyle);
+
+        initGrid(context);
+    }
+
+    public void setPresGrid(PresentationGrid presGrid) {
+        this.presGrid = presGrid;
     }
 
     // Methods from View

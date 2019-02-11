@@ -1,6 +1,8 @@
 package com.example.mytictoctoe.graphiqueMVP.globalpackage;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,6 +27,18 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClic
 
     public ViewGlobal(Context context){
         super(context);
+
+        initGlobal(context);
+    }
+
+    public ViewGlobal(Context context, @Nullable AttributeSet attributeSet){
+        super(context, attributeSet);
+
+        initGlobal(context);
+    }
+
+    public ViewGlobal(Context context, @Nullable AttributeSet attributeSet, int defStyle){
+        super(context, attributeSet, defStyle);
 
         initGlobal(context);
     }
