@@ -86,7 +86,7 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
 
     // Methods belong to this class
     private void initPaintSquare(Context context){
-        racine = inflate(context, R.layout.view_square, this);
+        //racine = inflate(context, R.layout.view_square, this);
         //addView(racine);
 
         squarePaint = new Paint();
