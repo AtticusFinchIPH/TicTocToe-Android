@@ -37,9 +37,13 @@ public class PresentationSquare implements IObserverOfGrid {
         etatCourant = etatDisableSquare;
     }
 
-    // Point to IViewSquare
+    // Point to IViewSquare and ModelSquare
     public void setView(IViewSquare viewSquare) {
         this.viewSquare = viewSquare;
+    }
+
+    public void setModelSquare(ModelSquare modelSquare) {
+        this.modelSquare = modelSquare;
     }
 
     public ModelSquare getModelSquare() {

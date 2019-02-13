@@ -72,6 +72,7 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClic
 
     public void initGlobal(Context context){
         racine = inflate(context, R.layout.view_global, this);
+        addView(racine);
 
         textView = findViewById(R.id.textview);
         viewGrid = findViewById(R.id.viewgrid);

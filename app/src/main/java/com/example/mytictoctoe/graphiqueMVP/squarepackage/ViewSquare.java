@@ -25,13 +25,15 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
     private Paint squarePaint, oPaint, xPaint;
 
     public ViewSquare(Context context){
-        super(context);
+        //super(context);
+        this(context, null);
 
         initPaintSquare(context);
     }
 
     public ViewSquare (Context context, @Nullable AttributeSet attributeSet){
-        super(context, attributeSet);
+        //super(context, attributeSet);
+        this(context, attributeSet, 0);
 
         initPaintSquare(context);
     }
@@ -85,6 +87,7 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
     // Methods belong to this class
     private void initPaintSquare(Context context){
         racine = inflate(context, R.layout.view_square, this);
+        //addView(racine);
 
         squarePaint = new Paint();
         squarePaint.setColor(Color.GRAY);
