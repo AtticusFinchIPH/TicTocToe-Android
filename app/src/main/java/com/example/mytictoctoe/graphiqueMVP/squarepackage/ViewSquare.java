@@ -9,6 +9,7 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.mytictoctoe.R;
 
@@ -17,6 +18,7 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
     private PresentationSquare presSquare;
 
     private View racine;
+    private View leChamp;
 
     private static final int LINE_THICK = 5;
     private static final int ELT_MARGIN = 5;
@@ -86,7 +88,8 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
 
     // Methods belong to this class
     private void initPaintSquare(Context context){
-        //racine = inflate(context, R.layout.view_square, this);
+        racine = inflate(context, R.layout.view_square, this);
+        leChamp = racine.findViewById(R.id.mon_champ);
         //addView(racine);
 
         squarePaint = new Paint();

@@ -12,8 +12,6 @@ import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGlobal;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfGrid;
 import com.example.mytictoctoe.graphiqueMVP.iobservers.IObserverOfSquare;
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.PresentationSquare;
-import com.example.mytictoctoe.noyaufonction.GameEngine;
-import com.example.mytictoctoe.noyaufonction.Grid;
 
 import java.util.ArrayList;
 import java.util.List;

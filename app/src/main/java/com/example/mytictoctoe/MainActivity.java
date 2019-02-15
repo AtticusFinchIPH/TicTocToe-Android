@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Geste", "Dans OnCreate");
 
         gameEngine = new GameEngine();
+        viewGlobal = this.findViewById(R.id.view_global);
         presGlobal = new PresentationGlobal();
         presGlobal.setView(viewGlobal);
         presGlobal.setGameEngine(gameEngine);

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.mytictoctoe.MainActivity;
 import com.example.mytictoctoe.R;
+import com.example.mytictoctoe.graphiqueMVP.gridpackage.PresentationGrid;
 import com.example.mytictoctoe.graphiqueMVP.gridpackage.ViewGrid;
 
 public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClickListener {
@@ -21,6 +22,7 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClic
     private View racine;
     private TextView textView;
     private ViewGrid viewGrid;
+    private PresentationGrid presGrid;
     private Button playButton;
 
     private static char player;
@@ -73,9 +75,12 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClic
     public void initGlobal(Context context){
         racine = inflate(context, R.layout.view_global, this);
 
-        textView = findViewById(R.id.textView);
-        viewGrid = findViewById(R.id.viewgrid);
-        playButton = findViewById(R.id.button);
+        textView = racine.findViewById(R.id.textView);
+        viewGrid = racine.findViewById(R.id.viewgrid);
+        presGrid = new PresentationGrid();
+        viewGrid.setPresGrid(presGrid);
+        presGrid.setViewGrid(viewGrid);
+        playButton = racine.findViewById(R.id.button);
 
         textView.setText("Click Play Button to Start");
         playButton.setActivated(true);

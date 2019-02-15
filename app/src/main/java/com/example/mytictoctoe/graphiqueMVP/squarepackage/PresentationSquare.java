@@ -42,10 +42,6 @@ public class PresentationSquare implements IObserverOfGrid {
         this.viewSquare = viewSquare;
     }
 
-    public void setModelSquare(ModelSquare modelSquare) {
-        this.modelSquare = modelSquare;
-    }
-
     public ModelSquare getModelSquare() {
         return modelSquare;
     }
