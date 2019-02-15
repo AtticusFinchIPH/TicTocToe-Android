@@ -8,7 +8,6 @@ import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.EtatEmptySqua
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.EtatFilledSquare;
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.IEtatSquare;
 import com.example.mytictoctoe.graphiqueMVP.squarepackage.automate.SquareException;
-import com.example.mytictoctoe.noyaufonction.Square;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,9 @@ public class PresentationSquare implements IObserverOfGrid {
     // Observers of Square
     List<IObserverOfSquare> observers = new ArrayList<IObserverOfSquare>();
 
-    public PresentationSquare(){
+    public PresentationSquare(int pos){
+        modelSquare = new ModelSquare();
+        modelSquare.setPosition(pos);
 
         etatDisableSquare = new EtatDisableSquare(this, modelSquare);
         etatEmptySquare = new EtatEmptySquare(this, modelSquare);
@@ -46,6 +47,10 @@ public class PresentationSquare implements IObserverOfGrid {
         return modelSquare;
     }
 
+    public PresentationGrid getPresGrid() {
+        return presGrid;
+    }
+
     // Methods for Observer Pattern
     public void  attach(IObserverOfSquare observer){
         observers.add(observer);
@@ -60,19 +65,17 @@ public class PresentationSquare implements IObserverOfGrid {
     @Override
     public void updateFromGrid() {
         if (presGrid.getEtatCourant().equals(presGrid.getEtatSwitchPlayer())) {
-            try{
-                etatCourant.choose();
-                modelSquare.setCharacter(presGrid.getModelGrid().getCurrentCharacter());
-            } catch (SquareException e){
-            }
+            modelSquare.setCharacter(presGrid.getModelGrid().getCurrentCharacter());
         } else if (presGrid.getEtatCourant().equals(presGrid.getEtatInGame())){
             try {
                 etatCourant.newgame();
+                viewSquare.notifEnable(true);
             } catch (SquareException e){
             }
         } else if(presGrid.getEtatCourant().equals(presGrid.getEtatEndGame())){
             try {
                 etatCourant.endgame();
+                viewSquare.notifEnable(false);
             } catch (SquareException e){
             }
         }
@@ -108,6 +111,7 @@ public class PresentationSquare implements IObserverOfGrid {
     public void touched(){
         try{
             etatCourant.choose();
+            notifAllObservers();
         } catch (SquareException e){
         }
 

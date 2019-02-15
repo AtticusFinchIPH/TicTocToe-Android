@@ -83,49 +83,69 @@ public class ViewGrid extends GridLayout implements IViewGrid {
     public void initGrid(Context context) {
         racine = inflate(context, R.layout.view_grid, this);
         viewSquare1 = racine.findViewById(R.id.square_1);
-        presSquare1 = new PresentationSquare();
+        presSquare1 = new PresentationSquare(1);
         viewSquare1.setPresSquare(presSquare1);
         presSquare1.setView(viewSquare1);
 
         viewSquare2 = racine.findViewById(R.id.square_2);
-        presSquare2 = new PresentationSquare();
+        presSquare2 = new PresentationSquare(2);
         viewSquare2.setPresSquare(presSquare2);;
         presSquare2.setView(viewSquare2);
 
         viewSquare3 = racine.findViewById(R.id.square_3);
-        presSquare3 = new PresentationSquare();
+        presSquare3 = new PresentationSquare(3);
         viewSquare3.setPresSquare(presSquare3);
         presSquare3.setView(viewSquare3);
 
         viewSquare4 = racine.findViewById(R.id.square_4);
-        presSquare4 = new PresentationSquare();
+        presSquare4 = new PresentationSquare(4);
         viewSquare4.setPresSquare(presSquare4);
         presSquare4.setView(viewSquare4);
 
         viewSquare5 = racine.findViewById(R.id.square_5);
-        presSquare5 = new PresentationSquare();
+        presSquare5 = new PresentationSquare(5);
         viewSquare5.setPresSquare(presSquare5);
         presSquare5.setView(viewSquare5);
 
         viewSquare6 = racine.findViewById(R.id.square_6);
-        presSquare6 = new PresentationSquare();
+        presSquare6 = new PresentationSquare(6);
         viewSquare6.setPresSquare(presSquare6);
         presSquare6.setView(viewSquare6);
 
         viewSquare7 = racine.findViewById(R.id.square_7);
         viewSquare7.setPresSquare(presSquare7);
-        presSquare7 = new PresentationSquare();
+        presSquare7 = new PresentationSquare(7);
         presSquare7.setView(viewSquare7);
 
         viewSquare8 = racine.findViewById(R.id.square_8);
-        presSquare8 = new PresentationSquare();
+        presSquare8 = new PresentationSquare(8);
         viewSquare8.setPresSquare(presSquare8);
         presSquare8.setView(viewSquare8);
 
         viewSquare9 = racine.findViewById(R.id.square_9);
-        presSquare9 = new PresentationSquare();
+        presSquare9 = new PresentationSquare(9);
         viewSquare9.setPresSquare(presSquare9);
         presSquare9.setView(viewSquare9);
+
+        presSquare1.subscribeToGrid(presGrid);
+        presSquare2.subscribeToGrid(presGrid);
+        presSquare3.subscribeToGrid(presGrid);
+        presSquare4.subscribeToGrid(presGrid);
+        presSquare5.subscribeToGrid(presGrid);
+        presSquare6.subscribeToGrid(presGrid);
+        presSquare7.subscribeToGrid(presGrid);
+        presSquare8.subscribeToGrid(presGrid);
+        presSquare9.subscribeToGrid(presGrid);
+
+        presGrid.subscribeToSquare(presSquare1);
+        presGrid.subscribeToSquare(presSquare2);
+        presGrid.subscribeToSquare(presSquare3);
+        presGrid.subscribeToSquare(presSquare4);
+        presGrid.subscribeToSquare(presSquare5);
+        presGrid.subscribeToSquare(presSquare6);
+        presGrid.subscribeToSquare(presSquare7);
+        presGrid.subscribeToSquare(presSquare8);
+        presGrid.subscribeToSquare(presSquare9);
 
         this.setColumnCount(column);
         this.setRowCount(row);

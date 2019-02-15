@@ -13,7 +13,7 @@ public class EtatEnableGlobal extends AbstractEtatGlobal {
     }
 
     @Override
-    public void newgame() throws ButtonException {
+    public void newgame() throws GlobalException {
         modelGlobal.setClickable(false);
         presGlobal.setEtatCourant(presGlobal.getEtatDisableButton());
         LOGGER.info("Passage to EtatDisableButton");

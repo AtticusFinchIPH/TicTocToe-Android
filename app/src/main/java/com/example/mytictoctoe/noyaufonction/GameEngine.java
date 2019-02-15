@@ -12,6 +12,7 @@ public class GameEngine {
 
     public GameEngine() {
         grid = new Grid();
+        isEnded = false;
         playerList = new ArrayList<Player>(2);
         playerList.get(0).setCharacter('O');
         playerList.get(1).setCharacter('X');
@@ -43,12 +44,15 @@ public class GameEngine {
         setEnded(false);
     }
 
-    public void choose(int x, int y) {
-        if(!isEnded && grid.getSquares().get(x + 3*y).getCharacter() == ' '){
-            grid.getSquares().get(x + 3*y).setCharacter(currentPlayer.getCharacter());
+    public void choose(int pos) {
+        if(!isEnded && grid.getSquares().get(pos).getCharacter() == ' '){
+            grid.getSquares().get(pos).setCharacter(currentPlayer.getCharacter());
             if(grid.checkWinner()== ' ') changePlayer();
             else if(grid.checkWinner()== currentPlayer.getCharacter()) setEnded(true);
-            else if(grid.checkWinner()== 'N') setEnded(true);// Attention here!!!!!!!!!!!
+            else if(grid.checkWinner()== 'N') {
+                currentPlayer.setCharacter('N');
+                setEnded(true);
+            }
         }
     }
 

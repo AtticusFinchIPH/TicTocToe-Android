@@ -61,15 +61,21 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClic
 
     @Override
     public void notifSwitchPlayer() {
-        player = presGlobal.getModel().getCurrentplayer();
+        player = presGlobal.getPresGrid().getModelGrid().getCurrentCharacter();
         textView.setText(player + "'s turn");
     }
 
     @Override
     public void notifEndGame() {
-        // set textView
+        textView.setText(presGlobal.getPresGrid().getModelGrid().getRecentCharacter()
+                        + "is the winner!");
         playButton.setActivated(true);
         playButton.setText("Play");
+        /*
+        TODO
+        The following line may cause problem. Not sure.
+        */
+        playButton.setOnClickListener(this);
     }
 
     public void initGlobal(Context context){
@@ -82,10 +88,12 @@ public class ViewGlobal extends LinearLayout implements IViewGlobal, View.OnClic
         presGrid.setViewGrid(viewGrid);
         playButton = racine.findViewById(R.id.button);
 
-        textView.setText("Click Play Button to Start");
+        presGrid.subscribeToGlobal(presGlobal);
+        presGlobal.subscribeToGrid(presGrid);
+
+        textView.setText("Click Play Button to Start Game");
         playButton.setActivated(true);
         playButton.setText("Play");
         playButton.setOnClickListener(this);
     }
-
 }

@@ -2,14 +2,21 @@ package com.example.mytictoctoe.graphiqueMVP.globalpackage;
 
 public class ModelGlobal {
 
+    /*
     private String infoString;
     private char currentplayer;
+    */
     private  boolean clickable;
 
     public ModelGlobal() {
+        /*
+        infoString = "Click Play Button to Start";
+        currentplayer = 'O';
+        */
         clickable = true;
     }
 
+    /*
     public void setInfoString(String infoString) {
         this.infoString = infoString;
     }
@@ -25,6 +32,7 @@ public class ModelGlobal {
     public char getCurrentplayer() {
         return currentplayer;
     }
+    */
 
     public void setClickable(boolean clickable) {
         this.clickable = clickable;

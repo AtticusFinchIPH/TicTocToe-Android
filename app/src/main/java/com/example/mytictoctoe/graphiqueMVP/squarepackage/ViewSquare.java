@@ -9,7 +9,6 @@ import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.mytictoctoe.R;
 
@@ -75,10 +74,10 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
         return super.onTouchEvent(event);
     }
 
-    // Methods for notifying presSquare
     @Override
-    public void notifDisable(boolean b) {
-
+    public void notifEnable(boolean b) {
+        this.setClickable(b);
+        invalidate();
     }
 
     @Override
@@ -88,9 +87,9 @@ public class ViewSquare extends ConstraintLayout implements IViewSquare {
 
     // Methods belong to this class
     private void initPaintSquare(Context context){
-        racine = inflate(context, R.layout.view_square, this);
-        leChamp = racine.findViewById(R.id.mon_champ);
-        //addView(racine);
+       racine = inflate(context, R.layout.view_square, this);
+       racine.setClickable(true);
+       leChamp = racine.findViewById(R.id.mon_champ);
 
         squarePaint = new Paint();
         squarePaint.setColor(Color.GRAY);

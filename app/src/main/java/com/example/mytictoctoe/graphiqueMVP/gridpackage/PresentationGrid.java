@@ -34,6 +34,7 @@ public class PresentationGrid implements IObserverOfGlobal, IObserverOfSquare {
     private List<IObserverOfGrid> observers = new ArrayList<IObserverOfGrid>();
 
     public PresentationGrid (){
+        modelGrid = new ModelGrid();
 
         etatInGame = new EtatGridInGame(this, modelGrid);
         etatSwitchPlayer = new EtatGridSwitchPlayer(this, modelGrid);
@@ -91,8 +92,8 @@ public class PresentationGrid implements IObserverOfGlobal, IObserverOfSquare {
     // Notification from Square part
     @Override
     public void updateFromSquare() {
-        // TODO
         try {
+            modelGrid.setRecentSquare(presSquare.getModelSquare().getPosition());
             etatCourant.switchPlayer();
         } catch (GridException e){
         }
@@ -125,6 +126,4 @@ public class PresentationGrid implements IObserverOfGlobal, IObserverOfSquare {
     public IEtatGrid getEtatEndGame() {
         return etatEndGame;
     }
-
-
 }

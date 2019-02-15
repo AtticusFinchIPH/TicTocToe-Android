@@ -15,6 +15,7 @@ public class EtatFilledSquare extends AbstractEtatSquare {
     @Override
     public void endgame() throws SquareException {
         presSquare.setEtatCourant(presSquare.getEtatDisableSquare());
+        modelSquare.setCharacter(' ');
         LOGGER.info("Passage to EtatDisableSquare");
     }
 }

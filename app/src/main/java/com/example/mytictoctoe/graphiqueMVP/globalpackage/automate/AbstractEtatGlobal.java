@@ -14,12 +14,12 @@ public abstract class AbstractEtatGlobal implements IEtatGlobal {
     }
 
     @Override
-    public void newgame() throws ButtonException{
-        throw new ButtonException();
+    public void newgame() throws GlobalException {
+        throw new GlobalException();
     }
 
     @Override
-    public void endgame() throws ButtonException{
-        throw new ButtonException();
+    public void endgame() throws GlobalException {
+        throw new GlobalException();
     }
 }

@@ -15,12 +15,14 @@ public class EtatEmptySquare extends AbstractEtatSquare {
     @Override
     public void endgame() throws SquareException {
         presSquare.setEtatCourant(presSquare.getEtatDisableSquare());
+        modelSquare.setCharacter(' ');
         LOGGER.info("Passage to EtatDisableSquare");
     }
 
     @Override
     public void choose() throws SquareException {
         presSquare.setEtatCourant(presSquare.getEtatFilledSquare());
+        modelSquare.setCharacter(presSquare.getPresGrid().getModelGrid().getCurrentCharacter());
         LOGGER.info("Passage to EtatFilledSquare");
     }
 }

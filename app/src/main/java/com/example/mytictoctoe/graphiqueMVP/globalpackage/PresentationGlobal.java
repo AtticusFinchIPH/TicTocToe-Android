@@ -1,6 +1,6 @@
 package com.example.mytictoctoe.graphiqueMVP.globalpackage;
 
-import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.ButtonException;
+import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.GlobalException;
 import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.EtatDisableGlobal;
 import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.EtatEnableGlobal;
 import com.example.mytictoctoe.graphiqueMVP.globalpackage.automate.IEtatGlobal;
@@ -40,6 +40,10 @@ public class PresentationGlobal implements IObserverOfGrid {
         return modelGlobal;
     }
 
+    public PresentationGrid getPresGrid() {
+        return presGrid;
+    }
+
     // Point to IVueButton
     public void setView(final IViewGlobal v){
         viewGlobal = v;
@@ -62,8 +66,18 @@ public class PresentationGlobal implements IObserverOfGrid {
 
     @Override
     public void updateFromGrid() {
-        //gameEngine.isEnded();
+        if(presGrid.getEtatCourant().equals(presGrid.getEtatSwitchPlayer())){
+            gameEngine.choose(presGrid.getModelGrid().getRecentSquare()-1);
+            if (gameEngine.isEnded()) {
+                viewGlobal.notifEndGame();
+                try {
+                    etatCourant.endgame();
+                    viewGlobal.notifEndGame();
+                } catch (GlobalException e) {
+                }
+            }
         this.notifAllObservers();
+        }
     }
 
     @Override
@@ -95,7 +109,7 @@ public class PresentationGlobal implements IObserverOfGrid {
         this.notifAllObservers();
         try {
             etatCourant.newgame();
-        } catch (ButtonException e){
+        } catch (GlobalException e){
         }
     }
 }
